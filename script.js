@@ -31,7 +31,7 @@ fetch(url)
             ${user.name.last}`
 
             p.innerHTML = `${user.dob.date}`
-            
+
         })
     })
 
@@ -39,58 +39,35 @@ fetch(url)
         console.log(JSON.stringify(error));
     });
 
-// Sort 
+// Sort
+class Sort {
+    constructor() {}
+    sort(value) {
+        var list, i, switching, b, c, shouldSwitch;
 
-function sortListByName() {
-    var list, i, switching, b, c, shouldSwitch;
+        list = document.getElementById("users");
+        switching = true;
 
-    list = document.getElementById("users");
-    switching = true;
+        while (switching) {
+            switching = false;
+            b = list.getElementsByTagName("SPAN");
+            c = list.getElementsByTagName(value);
 
-    while (switching) {
-        switching = false;
-        b = list.getElementsByTagName("SPAN");
-        c = list.getElementsByTagName("H3");
-
-        for (i = 0; i < (b.length - 1); i++) {
-            shouldSwitch = false;
-            if (c[i].innerHTML.toLowerCase() > c[i + 1].innerHTML.toLowerCase()) {
-                shouldSwitch = true;
-                break;
+            for (i = 0; i < (b.length - 1); i++) {
+                shouldSwitch = false;
+                if (c[i].innerHTML.toLowerCase() > c[i + 1].innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
             }
-        }
 
-        if (shouldSwitch) {
-            b[i].parentNode.insertBefore(b[i + 1], b[i]);
-            switching = true;
+            if (shouldSwitch) {
+                b[i].parentNode.insertBefore(b[i + 1], b[i]);
+                switching = true;
+            }
         }
     }
 }
 
-function sortListByDate() {
-    var list, i, switching, b, c, shouldSwitch;
-
-    list = document.getElementById("users");
-    switching = true;
-
-    while (switching) {
-        switching = false;
-        b = list.getElementsByTagName("SPAN");
-        c = list.getElementsByTagName("P");
-
-        for (i = 0; i < (b.length - 1); i++) {
-            shouldSwitch = false;
-            if (c[i].innerHTML.toLowerCase() > c[i + 1].innerHTML.toLowerCase()) {
-                shouldSwitch = true;
-                break;
-            }
-        }
-
-        if (shouldSwitch) {
-            b[i].parentNode.insertBefore(b[i + 1], b[i]);
-            switching = true;
-        }
-    }
-}
-
-
+let sortName = new Sort();
+let sortDate = new Sort();
